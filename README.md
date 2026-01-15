@@ -4,7 +4,7 @@ Draftly is a simple, AI-powered email drafting tool that helps you create profes
 
 Live Link: ![draftly](https://draftly.streamlit.app/)
 
-[!draftly](/image/Screenshot.png)
+![draftly](/image/Screenshot.png)
 
 ## Features
 

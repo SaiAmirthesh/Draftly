@@ -45,7 +45,7 @@ def main():
         recipient = st.text_input("Recipient Name/Role:", placeholder="e.g., Hiring Manager, Client Name")
         purpose = st.text_area("Purpose/Key Points:", 
                              placeholder="What do you want to achieve with this email?\n\nExample:\n- Introducing my services\n- Following up on our meeting\n- Applying for a position\n", 
-                             height=170)
+                             height=200)
         
         col1a, col1b = st.columns(2)
         with col1a:

@@ -2,9 +2,6 @@
 
 Draftly is a simple, AI-powered email drafting tool that helps you create professional emails in seconds.
 
-Live Link: ![draftly](https://draftly.streamlit.app/)
-
-![draftly](/image/Screenshot.png)
 
 ## Features
 

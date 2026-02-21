@@ -2,7 +2,6 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { Mail, Zap, Sparkles, Send, Shield, MousePointer2, ArrowRight, Github, Twitter, Linkedin } from 'lucide-react';
-import Plasma from '../components/Plasma';
 import logo from '../assets/design-tool.png'
 
 const features = [
@@ -77,17 +76,6 @@ const LandingPage = () => {
             <main>
                 {/* Hero Section */}
                 <section className="relative pt-32 pb-20 overflow-hidden">
-                    {/* Background Plasma */}
-                    <div className="absolute top-0 left-0 w-full h-[600px] z-0 opacity-40 dark:opacity-60 pointer-events-none">
-                        <Plasma
-                            color="#7c35ffff"
-                            speed={0.6}
-                            direction="forward"
-                            scale={1.1}
-                            opacity={0.8}
-                            mouseInteractive={true}
-                        />
-                    </div>
 
                     {/* Original Background Gradients (Kept for depth) */}
                     <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-[500px] bg-gradient-to-b from-primary/10 to-transparent blur-3xl -z-10" />
@@ -128,6 +116,7 @@ const LandingPage = () => {
                                 >
                                     Explore Features
                                 </a>
+
                             </div>
 
                             {/* Social Proof / Dashboard Preview */}

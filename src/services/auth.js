@@ -22,3 +22,12 @@ export const getUser = async () => {
   const { data } = await supabase.auth.getUser();
   return data?.user;
 };
+
+export const signInWithGoogle = async () => {
+  return await supabase.auth.signInWithOAuth({
+    provider: 'google',
+    options: {
+      redirectTo: `${window.location.origin}/main`,
+    },
+  });
+};

@@ -89,19 +89,19 @@ const ProfilePage = () => {
     }
 
     return (
-        <div className="min-h-screen bg-background selection:bg-primary/20">
+        <div className="min-h-screen bg-background selection:bg-primary/20 flex flex-col overflow-x-hidden">
             {/* Header / Navigation */}
-            <header className="h-16 border-b border-border/40 bg-background/50 backdrop-blur-md sticky top-0 z-50 px-4 md:px-8 flex items-center justify-between">
-                <div className="flex items-center gap-4">
+            <header className="h-16 border-b border-border/40 bg-background/50 backdrop-blur-md sticky top-0 z-50 px-4 md:px-8 flex items-center justify-between w-full">
+                <div className="flex items-center gap-4 min-w-0">
                     <button
                         onClick={() => navigate('/main')}
-                        className="p-2 hover:bg-secondary rounded-lg transition-all group"
+                        className="p-2 hover:bg-secondary rounded-lg transition-all group shrink-0"
                     >
                         <ArrowLeft className="w-5 h-5 text-muted-foreground group-hover:text-foreground" />
                     </button>
-                    <h2 className="text-lg font-bold">Profile Settings</h2>
+                    <h2 className="text-lg font-bold truncate">Profile Settings</h2>
                 </div>
-                <div className="flex items-center gap-3">
+                <div className="flex items-center gap-3 shrink-0">
                     <div className="w-8 h-8 bg-primary/10 rounded-md flex items-center justify-center text-primary">
                         <User className="w-4 h-4" />
                     </div>
@@ -131,13 +131,13 @@ const ProfilePage = () => {
                             <h3 className="mt-4 text-xl font-bold">{profile.full_name || profile.email?.split('@')[0]}</h3>
                             <p className="text-sm text-muted-foreground">{profile.email}</p>
                         </section>
-                        <div className="mt-6 flex items-center gap-3 justify-center w-full border rounded-lg">
+                        <div className="mt-6">
                             <button
                                 onClick={handleSignOut}
-                                className="w-full flex items-center gap-3 p-3 rounded-lg text-muted-foreground hover:bg-destructive/10 hover:text-destructive transition-all font-bold text-sm"
+                                className="w-full flex items-center justify-center gap-2 p-3 rounded-lg border border-destructive/20 text-muted-foreground hover:bg-destructive/10 hover:text-destructive hover:border-destructive/30 transition-all font-bold text-sm"
                             >
-                                <LogOut className="w-5 h-5 ml-2 " />
-                                <span className="hidden md:block ml-2">Sign Out</span>
+                                <LogOut className="w-5 h-5" />
+                                <span>Sign Out</span>
                             </button>
                         </div>
                     </div>

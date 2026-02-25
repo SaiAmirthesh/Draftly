@@ -992,10 +992,12 @@ function SplashCursor({
                 let posX = scaleByPixelRatio(touches[i].clientX - rect.left);
                 let posY = scaleByPixelRatio(touches[i].clientY - rect.top);
                 updatePointerDownData(pointer, touches[i].identifier, posX, posY);
+                clickSplat(pointer); // Optional: Splat on touch down for better mobile feel
             }
         };
 
         const handleTouchMove = e => {
+            // Do not call e.preventDefault() here if we want scrolling to work
             const touches = e.targetTouches;
             let pointer = pointers[0];
             let rect = canvas.getBoundingClientRect();
@@ -1015,7 +1017,7 @@ function SplashCursor({
         window.addEventListener('mousedown', handleMouseDown);
         window.addEventListener('mousemove', handleMouseMove);
         window.addEventListener('touchstart', handleTouchStart);
-        window.addEventListener('touchmove', handleTouchMove, { passive: false });
+        window.addEventListener('touchmove', handleTouchMove, { passive: true }); // Passive true so scrolling still works
         window.addEventListener('touchend', handleTouchEnd);
 
         updateFrame();
@@ -1046,9 +1048,10 @@ function SplashCursor({
         TRANSPARENT
     ]);
 
+    // Force full viewport height, and let it pass through all pointer events so ui below is clickable
     return (
         <div className="absolute inset-0 z-0 pointer-events-none w-full h-full overflow-hidden mix-blend-multiply dark:mix-blend-screen opacity-50">
-            <canvas ref={canvasRef} id="fluid" className="w-full h-full block"></canvas>
+            <canvas ref={canvasRef} id="fluid" className="w-full h-full block touch-none"></canvas>
         </div>
     );
 }

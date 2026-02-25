@@ -66,7 +66,7 @@ const MainPage = () => {
             {/* Sidebar */}
             <aside className="w-20 md:w-64 border-r border-border/40 bg-card/30 backdrop-blur-sm fixed h-full z-20 flex flex-col">
                 <div className="p-6 h-16 flex items-center gap-3 border-b border-border/40">
-                    <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center shrink-0">
+                    <div className="w-8 h-8 bg-primary rounded-md flex items-center justify-center shrink-0">
                         <img src={logo} className="w-8 h-8 text-primary-foreground" />
                     </div>
                     <span className="text-xl font-bold hidden md:block tracking-tight">Draftly</span>
@@ -85,19 +85,14 @@ const MainPage = () => {
                         active={activeTab === 'history'}
                         onClick={() => setActiveTab('history')}
                     />
-                    <SidebarItem
-                        icon={<User className="w-5 h-5" />}
-                        label="Profile"
-                        onClick={() => navigate('/profile')}
-                    />
                 </nav>
 
                 <div className="p-4 border-t border-border/40">
                     <button
                         onClick={() => navigate('/profile')}
-                        className="w-full flex items-center gap-3 p-2 rounded-xl bg-secondary/50 mb-4 overflow-hidden transition-all hover:bg-secondary group text-left"
+                        className="w-full flex items-center gap-3 p-2 rounded-lg bg-secondary/50 mb-4 overflow-hidden transition-all hover:bg-secondary group text-left"
                     >
-                        <div className="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center text-primary font-bold shrink-0 group-hover:scale-105 transition-transform overflow-hidden">
+                        <div className="w-10 h-10 rounded-md bg-primary/20 flex items-center justify-center text-primary font-bold shrink-0 group-hover:scale-105 transition-transform overflow-hidden">
                             {profile?.avatar_url ? (
                                 <img src={profile.avatar_url} alt="Avatar" className="w-full h-full object-cover" />
                             ) : (
@@ -113,7 +108,7 @@ const MainPage = () => {
                     </button>
                     <button
                         onClick={handleSignOut}
-                        className="w-full flex items-center gap-3 p-3 rounded-xl text-muted-foreground hover:bg-destructive/10 hover:text-destructive transition-all font-bold text-sm"
+                        className="w-full flex items-center gap-3 p-3 rounded-lg text-muted-foreground hover:bg-destructive/10 hover:text-destructive transition-all font-bold text-sm"
                     >
                         <LogOut className="w-5 h-5" />
                         <span className="hidden md:block">Sign Out</span>
@@ -125,12 +120,6 @@ const MainPage = () => {
             <main className="flex-1 ml-20 md:ml-64 min-h-screen flex flex-col">
                 <header className="h-16 border-b border-border/40 bg-background/50 backdrop-blur-md sticky top-0 z-10 px-8 flex items-center justify-between">
                     <h2 className="text-lg font-bold">{activeTab === 'generate' ? 'Email Dashboard' : 'Draft History'}</h2>
-                    <div className="flex items-center gap-4">
-                        <div className="px-3 py-1 rounded-full bg-primary/10 border border-primary/20 text-primary text-[10px] font-bold uppercase tracking-wider flex items-center gap-1.5">
-                            <Sparkles className="w-3 h-3" />
-                            AI Online
-                        </div>
-                    </div>
                 </header>
 
                 <div className="flex-1 p-4 md:p-8">
@@ -142,7 +131,7 @@ const MainPage = () => {
                                     <p className="text-muted-foreground">Fill in the details below to generate your AI-crafted email.</p>
                                 </div>
 
-                                <div className="bg-card border border-border/50 rounded-2xl shadow-xl overflow-hidden backdrop-blur-sm">
+                                <div className="bg-card border border-border/50 rounded-lg shadow-xl overflow-hidden backdrop-blur-sm">
                                     <EmailForm />
                                 </div>
 
@@ -169,22 +158,26 @@ const MainPage = () => {
                                 </div>
                                 <div className="grid gap-4">
                                     {drafts.length > 0 ? drafts.map((draft) => (
-                                        <div key={draft.id} className="p-6 bg-card border border-border/50 rounded-2xl hover:border-primary/50 transition-colors">
+                                        <div
+                                            key={draft.id}
+                                            onClick={() => navigate(`/draft/${draft.id}`)}
+                                            className="cursor-pointer p-6 bg-card border border-border/50 rounded-lg hover:border-primary/50 transition-colors"
+                                        >
                                             <div className="flex justify-between items-start mb-4">
                                                 <div>
                                                     <h3 className="font-bold text-lg">{draft.subject}</h3>
                                                     <p className="text-sm text-muted-foreground">To: {draft.recipient_email || 'No recipient'}</p>
                                                 </div>
-                                                <span className="text-[10px] bg-secondary px-2 py-1 rounded-full font-bold uppercase">
+                                                <span className="text-[10px] bg-secondary px-2 py-1 rounded-md font-bold uppercase">
                                                     {new Date(draft.generated_at).toLocaleDateString()}
                                                 </span>
                                             </div>
-                                            <div className="bg-secondary/20 p-4 rounded-xl font-mono text-sm whitespace-pre-wrap line-clamp-4">
+                                            <div className="bg-secondary/20 p-4 rounded-md font-mono text-sm whitespace-pre-wrap line-clamp-4">
                                                 {draft.content}
                                             </div>
                                         </div>
                                     )) : (
-                                        <div className="text-center py-20 border-2 border-dashed border-border rounded-3xl">
+                                        <div className="text-center py-20 border-2 border-dashed border-border rounded-lg">
                                             <p className="text-muted-foreground">No drafts found yet. Start generating!</p>
                                         </div>
                                     )}
@@ -195,7 +188,7 @@ const MainPage = () => {
                 </div>
 
                 <footer className="p-8 border-t border-border/40 text-center text-xs text-muted-foreground font-medium opacity-60">
-                    © {new Date().getFullYear()} Draftly AI. Powered by Gemini Pro.
+                    © {new Date().getFullYear()} Draftly AI.
                 </footer>
             </main>
         </div>
@@ -205,7 +198,7 @@ const MainPage = () => {
 const SidebarItem = ({ icon, label, active, onClick }) => (
     <button
         onClick={onClick}
-        className={`w-full flex items-center gap-3 p-3 rounded-xl transition-all font-bold text-sm ${active ? 'bg-primary text-primary-foreground shadow-lg shadow-primary/25' : 'text-muted-foreground hover:bg-secondary hover:text-foreground'}`}
+        className={`w-full flex items-center gap-3 p-3 rounded-md transition-all font-bold text-sm ${active ? 'bg-primary text-primary-foreground shadow-lg shadow-primary/25' : 'text-muted-foreground hover:bg-secondary hover:text-foreground'}`}
     >
         <div className="shrink-0">{icon}</div>
         <span className="hidden md:block">{label}</span>
@@ -213,7 +206,7 @@ const SidebarItem = ({ icon, label, active, onClick }) => (
 );
 
 const TipCard = ({ title, description }) => (
-    <div className="p-6 rounded-2xl bg-secondary/30 border border-border/40">
+    <div className="p-6 rounded-md bg-secondary/30 border border-border/40">
         <h4 className="font-bold text-sm mb-2">{title}</h4>
         <p className="text-xs text-muted-foreground leading-relaxed font-medium">{description}</p>
     </div>

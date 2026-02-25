@@ -3,6 +3,8 @@ import { motion } from 'framer-motion'
 import { Mail, Send, Sparkles } from 'lucide-react'
 import { geminiService } from '../services/geminiService'
 import { draftService } from '../services/draftService'
+import Loader from './Loader'
+import { useNotification } from './notification'
 
 const EMAIL_TYPES = [
   'Business Email', 'Cold Email', 'Cover Letter',
@@ -14,6 +16,7 @@ const TONES = ['Casual', 'Professional', 'Formal', 'Friendly', 'Persuasive']
 export const EmailForm = () => {
   const [loading, setLoading] = useState(false)
   const [generatedEmail, setGeneratedEmail] = useState('')
+  const { showNotification } = useNotification()
   const [formData, setFormData] = useState({
     email_type: 'Business Email',
     tone: 'Professional',
@@ -26,7 +29,7 @@ export const EmailForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault()
     if (!formData.prompt) {
-      alert('Please enter what you want to say!')
+      showNotification('Please enter your message requirements!', 'error')
       return
     }
 
@@ -56,7 +59,7 @@ export const EmailForm = () => {
       });
     } catch (error) {
       console.error('Generation error:', error);
-      alert('Failed to generate email. Please check your API key and try again.');
+      showNotification('Failed to generate email. Please check your API key.', 'error');
     } finally {
       setLoading(false)
     }
@@ -90,7 +93,7 @@ export const EmailForm = () => {
       });
     } catch (error) {
       console.error('Improvement error:', error);
-      alert('Failed to improve email.');
+      showNotification('Failed to improve email.', 'error');
     } finally {
       setLoading(false)
     }
@@ -102,7 +105,7 @@ export const EmailForm = () => {
         {/* Form Column */}
         <div className="space-y-6">
           <div className="flex items-center gap-2 mb-2 pb-4 border-b border-border/40">
-            <div className="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center text-primary">
+            <div className="w-8 h-8 rounded-md bg-primary/10 flex items-center justify-center text-primary">
               <Sparkles className="w-4 h-4" />
             </div>
             <h2 className="text-xl font-bold tracking-tight">Email Details</h2>
@@ -115,7 +118,7 @@ export const EmailForm = () => {
                 <select
                   value={formData.email_type}
                   onChange={(e) => setFormData({ ...formData, email_type: e.target.value })}
-                  className="w-full px-4 py-3 bg-secondary/50 border border-border rounded-xl focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all font-medium appearance-none"
+                  className="w-full px-4 py-3 bg-secondary/50 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all font-medium appearance-none"
                 >
                   {EMAIL_TYPES.map(type => (
                     <option key={type} className="bg-card cursor-pointer">{type}</option>
@@ -128,7 +131,7 @@ export const EmailForm = () => {
                 <select
                   value={formData.tone}
                   onChange={(e) => setFormData({ ...formData, tone: e.target.value })}
-                  className="w-full px-4 py-3 bg-secondary/50 border border-border rounded-xl focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all font-medium appearance-none"
+                  className="w-full px-4 py-3 bg-secondary/50 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all font-medium appearance-none"
                 >
                   {TONES.map(tone => (
                     <option key={tone} className="bg-card cursor-pointer">{tone}</option>
@@ -144,7 +147,7 @@ export const EmailForm = () => {
                 placeholder="e.g. Hiring Manager at TechCo"
                 value={formData.recipient}
                 onChange={(e) => setFormData({ ...formData, recipient: e.target.value })}
-                className="w-full px-4 py-3 bg-secondary/50 border border-border rounded-xl focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all font-medium"
+                className="w-full px-4 py-3 bg-secondary/50 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all font-medium"
               />
             </div>
 
@@ -155,7 +158,7 @@ export const EmailForm = () => {
                 rows="6"
                 value={formData.prompt}
                 onChange={(e) => setFormData({ ...formData, prompt: e.target.value })}
-                className="w-full px-4 py-3 bg-secondary/50 border border-border rounded-xl focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all font-medium resize-none"
+                className="w-full px-4 py-3 bg-secondary/50 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all font-medium resize-none"
                 required
               />
             </div>
@@ -168,7 +171,7 @@ export const EmailForm = () => {
                   placeholder="Your Name"
                   value={formData.your_name}
                   onChange={(e) => setFormData({ ...formData, your_name: e.target.value })}
-                  className="w-full px-4 py-3 bg-secondary/50 border border-border rounded-xl focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all font-medium"
+                  className="w-full px-4 py-3 bg-secondary/50 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all font-medium"
                 />
               </div>
               <div className="space-y-1.5">
@@ -178,7 +181,7 @@ export const EmailForm = () => {
                   placeholder="Your Role (optional)"
                   value={formData.your_role}
                   onChange={(e) => setFormData({ ...formData, your_role: e.target.value })}
-                  className="w-full px-4 py-3 bg-secondary/50 border border-border rounded-xl focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all font-medium"
+                  className="w-full px-4 py-3 bg-secondary/50 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all font-medium"
                 />
               </div>
             </div>
@@ -186,7 +189,7 @@ export const EmailForm = () => {
             <button
               type="submit"
               disabled={loading}
-              className="w-full bg-primary text-primary-foreground py-4 rounded-xl font-bold hover:scale-[1.02] transition-all disabled:opacity-50 disabled:scale-100 flex items-center justify-center gap-2 shadow-lg shadow-primary/20"
+              className="w-full bg-primary text-primary-foreground py-4 rounded-lg font-bold hover:scale-[1.02] transition-all disabled:opacity-50 disabled:scale-100 flex items-center justify-center gap-2 shadow-lg shadow-primary/20"
             >
               {loading ? (
                 <>
@@ -207,24 +210,28 @@ export const EmailForm = () => {
         <div className="flex flex-col h-full mt-4 lg:mt-0">
           <div className="flex items-center justify-between mb-2 pb-4 border-b border-border/40">
             <div className="flex items-center gap-2">
-              <div className="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center text-primary">
+              <div className="w-8 h-8 rounded-md bg-primary/10 flex items-center justify-center text-primary">
                 <Mail className="w-4 h-4" />
               </div>
               <h2 className="text-xl font-bold tracking-tight">AI Output</h2>
             </div>
             {generatedEmail && (
-              <div className="text-[10px] font-bold text-primary px-2 py-0.5 bg-primary/10 rounded-full uppercase tracking-widest">
+              <div className="text-[10px] font-bold text-primary px-2 py-0.5 bg-primary/10 rounded-md uppercase tracking-widest">
                 Generated
               </div>
             )}
           </div>
 
           <div className="flex-1 min-h-[400px] flex flex-col pt-4">
-            {generatedEmail ? (
+            {loading ? (
+              <div className="flex-1 flex items-center justify-center">
+                <Loader />
+              </div>
+            ) : generatedEmail ? (
               <motion.div
                 initial={{ opacity: 0, scale: 0.98 }}
                 animate={{ opacity: 1, scale: 1 }}
-                className="flex flex-col h-full bg-secondary/20 rounded-2xl border border-border/50 p-4"
+                className="flex flex-col h-full bg-secondary/20 rounded-lg border border-border/50 p-4"
               >
                 <textarea
                   value={generatedEmail}
@@ -237,9 +244,9 @@ export const EmailForm = () => {
                   <button
                     onClick={() => {
                       navigator.clipboard.writeText(generatedEmail);
-                      alert('Copied to clipboard!');
+                      showNotification('Copied to clipboard!', 'success');
                     }}
-                    className="flex-1 min-w-[120px] bg-secondary text-foreground py-3 rounded-xl font-bold hover:bg-secondary/80 transition-all flex items-center justify-center gap-2 border border-border"
+                    className="flex-1 min-w-[120px] bg-secondary text-foreground py-3 rounded-lg font-bold hover:bg-secondary/80 transition-all flex items-center justify-center gap-2 border border-border"
                   >
                     <Send className="w-4 h-4" />
                     Copy
@@ -247,7 +254,7 @@ export const EmailForm = () => {
                   <button
                     onClick={handleImprove}
                     disabled={loading}
-                    className="flex-1 min-w-[120px] bg-primary/10 text-primary py-3 rounded-xl font-bold hover:bg-primary/20 transition-all disabled:opacity-50 flex items-center justify-center gap-2 border border-primary/20"
+                    className="flex-1 min-w-[120px] bg-primary/10 text-primary py-3 rounded-lg font-bold hover:bg-primary/20 transition-all disabled:opacity-50 flex items-center justify-center gap-2 border border-primary/20"
                   >
                     <Sparkles className="w-4 h-4" />
                     Refine
@@ -255,7 +262,7 @@ export const EmailForm = () => {
                 </div>
               </motion.div>
             ) : (
-              <div className="flex-1 flex flex-col items-center justify-center text-center p-8 border-2 border-dashed border-border/40 rounded-3xl bg-secondary/5 group transition-colors hover:bg-secondary/10">
+              <div className="flex-1 flex flex-col items-center justify-center text-center p-8 border-2 border-dashed border-border/40 rounded-lg bg-secondary/5 group transition-colors hover:bg-secondary/10">
                 <div className="w-16 h-16 bg-muted/20 rounded-full flex items-center justify-center mb-6 text-muted-foreground group-hover:scale-110 transition-transform">
                   <Mail className="w-8 h-8 opacity-20" />
                 </div>

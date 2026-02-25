@@ -89,7 +89,7 @@ export default function RegisterPage() {
       <div className="max-w-md w-full relative">
         <div className="text-center mb-10">
           <Link to="/" className="inline-flex items-center gap-2 group mb-6">
-            <div className="w-10 h-10 bg-primary rounded-xl flex items-center justify-center transition-transform group-hover:scale-110">
+            <div className="w-10 h-10 bg-primary rounded-md flex items-center justify-center transition-transform group-hover:scale-110">
               <img src={logo} className="w-10 h-10 text-primary-foreground" />
             </div>
             <span className="text-2xl font-bold tracking-tight">Draftly</span>
@@ -113,7 +113,7 @@ export default function RegisterPage() {
 
         <Divider />
 
-        <div className="bg-card border border-border/50 rounded-2xl p-8 shadow-xl backdrop-blur-sm">
+        <div className="bg-card border border-border/50 rounded-lg p-8 shadow-xl backdrop-blur-sm">
           <form className="space-y-5" onSubmit={handleSubmit}>
             <div className="space-y-4">
               <div className="relative">
@@ -142,7 +142,7 @@ export default function RegisterPage() {
                     type="password"
                     autoComplete="new-password"
                     required
-                    className="w-full pl-10 pr-4 py-3 bg-secondary/50 border border-border rounded-xl focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all"
+                    className="w-full pl-10 pr-4 py-3 bg-secondary/50 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all"
                     placeholder="Minimum 6 characters"
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
@@ -164,7 +164,7 @@ export default function RegisterPage() {
             <button
               type="submit"
               disabled={loading}
-              className="w-full py-3 px-4 bg-primary text-primary-foreground rounded-xl font-bold hover:opacity-90 transition-all flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed shadow-lg shadow-primary/20"
+              className="w-full py-3 px-4 bg-primary text-primary-foreground rounded-md font-bold hover:opacity-90 transition-all flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed shadow-lg shadow-primary/20"
             >
               {loading ? 'Creating account...' : 'Create Account'}
               {!loading && <Sparkles className="w-4 h-4" />}

@@ -18,6 +18,25 @@ export const draftService = {
     return data;
   },
 
+  // Get a single draft by ID
+  async getDraftById(id) {
+    const { data: { user } } = await supabase.auth.getUser();
+    if (!user) throw new Error('Not authenticated');
+
+    const { data, error } = await supabase
+      .from('drafts')
+      .select('*')
+      .eq('id', id)
+      .eq('user_id', user.id)
+      .single();
+
+    if (error) {
+      console.error('Error fetching draft:', error);
+      throw error;
+    }
+    return data;
+  },
+
   // Save a new draft
   async saveDraft(draftData) {
     const { data: { user } } = await supabase.auth.getUser();
@@ -35,6 +54,26 @@ export const draftService = {
 
     if (error) {
       console.error('Error saving draft:', error);
+      throw error;
+    }
+    return data;
+  },
+
+  // Update an existing draft
+  async updateDraft(id, updates) {
+    const { data: { user } } = await supabase.auth.getUser();
+    if (!user) throw new Error('Not authenticated');
+
+    const { data, error } = await supabase
+      .from('drafts')
+      .update(updates)
+      .eq('id', id)
+      .eq('user_id', user.id)
+      .select()
+      .single();
+
+    if (error) {
+      console.error('Error updating draft:', error);
       throw error;
     }
     return data;

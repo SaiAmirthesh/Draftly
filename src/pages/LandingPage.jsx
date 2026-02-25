@@ -44,7 +44,7 @@ const LandingPage = () => {
             <header className="fixed top-0 w-full z-50 border-b border-border/40 bg-background/80 backdrop-blur-xl">
                 <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
                     <div className="flex items-center gap-2 group cursor-pointer">
-                        <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center transition-transform group-hover:scale-110">
+                        <div className="w-8 h-8 bg-primary rounded-md flex items-center justify-center transition-transform group-hover:scale-110">
                             <img src={logo} alt="logo" className="w-8 h-8 text-primary-foreground" />
                         </div>
                         <span className="text-xl font-bold tracking-tight">Draftly</span>
@@ -65,7 +65,7 @@ const LandingPage = () => {
                         </Link>
                         <Link
                             to="/register"
-                            className="px-4 py-2 bg-primary text-primary-foreground rounded-full text-sm font-semibold hover:opacity-90 transition-all hover:shadow-[0_0_20px_rgba(var(--primary),0.3)]"
+                            className="px-4 py-2 bg-primary text-primary-foreground rounded-md text-sm font-semibold hover:opacity-90 transition-all hover:shadow-[0_0_20px_rgba(var(--primary),0.3)]"
                         >
                             Get Started
                         </Link>
@@ -87,7 +87,7 @@ const LandingPage = () => {
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.5 }}
                         >
-                            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 border border-primary/20 text-primary text-xs font-bold mb-8 uppercase tracking-wider">
+                            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-primary/10 border border-primary/20 text-primary text-xs font-bold mb-8 uppercase tracking-wider">
                                 <Sparkles className="w-3 h-3" />
                                 AI-Powered Email Intelligence
                             </div>
@@ -105,14 +105,14 @@ const LandingPage = () => {
                             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
                                 <Link
                                     to="/register"
-                                    className="w-full sm:w-auto px-8 py-4 bg-primary text-primary-foreground rounded-xl font-bold text-lg hover:opacity-90 transition-all hover:scale-105 flex items-center justify-center gap-2 shadow-lg shadow-primary/20"
+                                    className="w-full sm:w-auto px-8 py-4 bg-primary text-primary-foreground rounded-lg font-bold text-lg hover:opacity-90 transition-all hover:scale-105 flex items-center justify-center gap-2 shadow-lg shadow-primary/20"
                                 >
                                     Try Draftly for Free
                                     <ArrowRight className="w-5 h-5" />
                                 </Link>
                                 <a
                                     href="#features"
-                                    className="w-full sm:w-auto px-8 py-4 bg-secondary text-secondary-foreground rounded-xl font-bold text-lg hover:bg-secondary/80 transition-all border border-border"
+                                    className="w-full sm:w-auto px-8 py-4 bg-secondary text-secondary-foreground rounded-lg font-bold text-lg hover:bg-secondary/80 transition-all border border-border"
                                 >
                                     Explore Features
                                 </a>
@@ -127,7 +127,7 @@ const LandingPage = () => {
                                 className="mt-20 relative"
                             >
                                 <div className="absolute inset-0 bg-primary/20 blur-3xl -z-10 rounded-full scale-90 opacity-50" />
-                                <div className="rounded-2xl border border-border/50 bg-card/50 backdrop-blur-sm p-4 md:p-8 shadow-2xl overflow-hidden">
+                                <div className="rounded-lg border border-border/50 bg-card/50 backdrop-blur-sm p-4 md:p-8 shadow-2xl overflow-hidden">
                                     <div className="flex items-center gap-2 mb-6 border-b border-border/30 pb-4">
                                         <div className="w-3 h-3 rounded-full bg-red-500/50" />
                                         <div className="w-3 h-3 rounded-full bg-yellow-500/50" />
@@ -138,16 +138,16 @@ const LandingPage = () => {
                                             <div className="h-8 bg-muted/40 rounded-md w-3/4" />
                                             <div className="h-4 bg-muted/30 rounded-md w-full" />
                                             <div className="h-4 bg-muted/30 rounded-md w-5/6" />
-                                            <div className="h-32 bg-primary/5 border border-primary/10 rounded-lg p-4 flex items-center justify-center italic text-muted-foreground">
+                                            <div className="h-32 bg-primary/5 border border-primary/10 rounded-md p-4 flex items-center justify-center italic text-muted-foreground">
                                                 "Draftly helped me land my dream internship with a perfectly tailored cold email."
                                             </div>
                                         </div>
                                         <div className="hidden md:block space-y-4">
                                             <div className="flex gap-2">
-                                                <div className="h-10 bg-primary/20 rounded-lg w-1/2" />
-                                                <div className="h-10 bg-muted/20 rounded-lg w-1/2" />
+                                                <div className="h-10 bg-primary/20 rounded-md w-1/2" />
+                                                <div className="h-10 bg-muted/20 rounded-md w-1/2" />
                                             </div>
-                                            <div className="h-40 bg-card border border-border/50 rounded-lg p-4 font-mono text-xs opacity-60">
+                                            <div className="h-40 bg-card border border-border/50 rounded-md p-4 font-mono text-xs opacity-60">
                                                 Subject: Collaboration Opportunity<br /><br />
                                                 Dear Alex,<br />
                                                 I've been following your work at TechFlow...
@@ -173,9 +173,9 @@ const LandingPage = () => {
                                 <motion.div
                                     key={index}
                                     whileHover={{ y: -5 }}
-                                    className="p-8 rounded-2xl bg-card border border-border/50 hover:border-primary/50 transition-all group"
+                                    className="p-8 rounded-lg bg-card border border-border/50 hover:border-primary/50 transition-all group"
                                 >
-                                    <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-6 text-primary group-hover:bg-primary group-hover:text-primary-foreground transition-all">
+                                    <div className="w-12 h-12 rounded-md bg-primary/10 flex items-center justify-center mb-6 text-primary group-hover:bg-primary group-hover:text-primary-foreground transition-all">
                                         {feature.icon}
                                     </div>
                                     <h3 className="text-xl font-bold mb-3">{feature.title}</h3>
@@ -245,7 +245,7 @@ const LandingPage = () => {
                 {/* CTA Section */}
                 <section className="py-24 relative">
                     <div className="max-w-4xl mx-auto px-6 text-center">
-                        <div className="p-12 rounded-3xl bg-gradient-to-br from-primary to-purple-600 text-primary-foreground overflow-hidden relative group">
+                        <div className="p-12 rounded-lg bg-gradient-to-br from-primary to-purple-600 text-primary-foreground overflow-hidden relative group">
                             <div className="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full -mr-32 -mt-32 blur-3xl group-hover:scale-125 transition-transform duration-700" />
                             <div className="relative z-10">
                                 <h2 className="text-4xl font-bold mb-6">Ready to transform your inbox?</h2>
@@ -254,7 +254,7 @@ const LandingPage = () => {
                                 </p>
                                 <Link
                                     to="/register"
-                                    className="inline-flex items-center gap-2 px-10 py-5 bg-white text-primary rounded-xl font-bold text-xl hover:scale-105 transition-all shadow-xl"
+                                    className="inline-flex items-center gap-2 px-10 py-5 bg-white text-primary rounded-lg font-bold text-xl hover:scale-105 transition-all shadow-xl"
                                 >
                                     Get Started for Free
                                     <ArrowRight className="w-5 h-5" />
@@ -271,7 +271,7 @@ const LandingPage = () => {
                     <div className="grid md:grid-cols-4 gap-12 mb-12">
                         <div className="col-span-1 md:col-span-2">
                             <div className="flex items-center gap-2 mb-6">
-                                <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
+                                <div className="w-8 h-8 bg-primary rounded-md flex items-center justify-center">
                                     <Mail className="w-5 h-5 text-primary-foreground" />
                                 </div>
                                 <span className="text-xl font-bold tracking-tight">Draftly</span>
@@ -281,9 +281,9 @@ const LandingPage = () => {
                                 We enable everyone to write professional, effective emails instantly.
                             </p>
                             <div className="flex gap-4">
-                                <a href="#" className="p-2 bg-secondary rounded-lg hover:text-primary transition-colors"><Twitter className="w-5 h-5" /></a>
-                                <a href="#" className="p-2 bg-secondary rounded-lg hover:text-primary transition-colors"><Github className="w-5 h-5" /></a>
-                                <a href="#" className="p-2 bg-secondary rounded-lg hover:text-primary transition-colors"><Linkedin className="w-5 h-5" /></a>
+                                <a href="#" className="p-2 bg-secondary rounded-md hover:text-primary transition-colors"><Twitter className="w-5 h-5" /></a>
+                                <a href="#" className="p-2 bg-secondary rounded-md hover:text-primary transition-colors"><Github className="w-5 h-5" /></a>
+                                <a href="#" className="p-2 bg-secondary rounded-md hover:text-primary transition-colors"><Linkedin className="w-5 h-5" /></a>
                             </div>
                         </div>
 

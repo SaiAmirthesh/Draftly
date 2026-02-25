@@ -95,14 +95,14 @@ const ProfilePage = () => {
                 <div className="flex items-center gap-4">
                     <button
                         onClick={() => navigate('/main')}
-                        className="p-2 hover:bg-secondary rounded-xl transition-all group"
+                        className="p-2 hover:bg-secondary rounded-lg transition-all group"
                     >
                         <ArrowLeft className="w-5 h-5 text-muted-foreground group-hover:text-foreground" />
                     </button>
                     <h2 className="text-lg font-bold">Profile Settings</h2>
                 </div>
                 <div className="flex items-center gap-3">
-                    <div className="w-8 h-8 bg-primary/10 rounded-lg flex items-center justify-center text-primary">
+                    <div className="w-8 h-8 bg-primary/10 rounded-md flex items-center justify-center text-primary">
                         <User className="w-4 h-4" />
                     </div>
                 </div>
@@ -112,7 +112,7 @@ const ProfilePage = () => {
                 <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
                     {/* Left Column: Avatar & Quick Info */}
                     <div className="lg:col-span-1 space-y-6">
-                        <section className="bg-card/30 backdrop-blur-sm border border-border/50 rounded-3xl p-8 text-center">
+                        <section className="bg-card/30 backdrop-blur-sm border border-border/50 rounded-lg p-8 text-center">
                             <div className="relative inline-block group">
                                 <div className="w-32 h-32 rounded-full bg-primary/20 flex items-center justify-center text-primary text-4xl font-bold ring-4 ring-background overflow-hidden">
                                     {profile.avatar_url ? (
@@ -131,11 +131,21 @@ const ProfilePage = () => {
                             <h3 className="mt-4 text-xl font-bold">{profile.full_name || profile.email?.split('@')[0]}</h3>
                             <p className="text-sm text-muted-foreground">{profile.email}</p>
                         </section>
+                        <div className="mt-6 flex items-center gap-3 justify-center w-full border rounded-lg">
+                            <button
+                                onClick={handleSignOut}
+                                className="w-full flex items-center gap-3 p-3 rounded-lg text-muted-foreground hover:bg-destructive/10 hover:text-destructive transition-all font-bold text-sm"
+                            >
+                                <LogOut className="w-5 h-5 ml-2 " />
+                                <span className="hidden md:block ml-2">Sign Out</span>
+                            </button>
+                        </div>
                     </div>
+
 
                     {/* Right Column: Profile Form */}
                     <div className="lg:col-span-2 space-y-8">
-                        <section className="bg-card border border-border/50 rounded-3xl shadow-xl p-8 backdrop-blur-md">
+                        <section className="bg-card border border-border/50 rounded-lg shadow-xl p-8 backdrop-blur-md">
                             <h3 className="text-xl font-bold mb-6">Personal Information</h3>
 
                             <form onSubmit={handleUpdate} className="space-y-6">
@@ -145,7 +155,7 @@ const ProfilePage = () => {
                                         type="text"
                                         value={profile.full_name}
                                         onChange={(e) => setProfile({ ...profile, full_name: e.target.value })}
-                                        className="w-full px-4 py-3 bg-secondary/50 border border-border rounded-xl focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all font-medium"
+                                        className="w-full px-4 py-3 bg-secondary/50 border border-border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all font-medium"
                                         placeholder="John Doe"
                                     />
                                 </div>
@@ -156,7 +166,7 @@ const ProfilePage = () => {
                                         type="email"
                                         value={profile.email}
                                         disabled
-                                        className="w-full px-4 py-3 bg-secondary/30 border border-border/50 rounded-xl font-medium text-muted-foreground cursor-not-allowed"
+                                        className="w-full px-4 py-3 bg-secondary/30 border border-border/50 rounded-lg font-medium text-muted-foreground cursor-not-allowed"
                                     />
                                     <p className="text-[10px] text-muted-foreground px-1 mt-1 font-medium">Email cannot be changed after registration.</p>
                                 </div>
@@ -177,7 +187,7 @@ const ProfilePage = () => {
                                     <button
                                         type="submit"
                                         disabled={saving || uploading}
-                                        className="bg-primary text-primary-foreground px-8 py-3 rounded-xl font-bold hover:scale-105 transition-all shadow-lg shadow-primary/20 flex items-center gap-2 disabled:opacity-50"
+                                        className="bg-primary text-primary-foreground px-8 py-3 rounded-lg font-bold hover:scale-105 transition-all shadow-lg shadow-primary/20 flex items-center gap-2 disabled:opacity-50"
                                     >
                                         {saving ? <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" /> : <Save className="w-4 h-4" />}
                                         Save Changes
@@ -205,7 +215,7 @@ const ProfilePage = () => {
                             initial={{ opacity: 0, scale: 0.95, y: 20 }}
                             animate={{ opacity: 1, scale: 1, y: 0 }}
                             exit={{ opacity: 0, scale: 0.95, y: 20 }}
-                            className="relative w-full max-w-md bg-card border border-border/50 rounded-[2.5rem] shadow-2xl p-8 overflow-hidden"
+                            className="relative w-full max-w-md bg-card border border-border/50 rounded-[1.5rem] shadow-2xl p-8 overflow-hidden"
                         >
                             <button
                                 onClick={() => setIsModalOpen(false)}
@@ -238,14 +248,14 @@ const ProfilePage = () => {
                                     <button
                                         onClick={() => fileInputRef.current?.click()}
                                         disabled={uploading}
-                                        className="w-full py-4 bg-primary text-primary-foreground rounded-2xl font-bold hover:scale-[1.02] transition-all shadow-lg flex items-center justify-center gap-2 disabled:opacity-50"
+                                        className="w-full py-4 bg-primary text-primary-foreground rounded-lg font-bold hover:scale-[1.02] transition-all shadow-lg flex items-center justify-center gap-2 disabled:opacity-50"
                                     >
                                         {uploading ? <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" /> : <Upload className="w-5 h-5" />}
                                         Upload New Photo
                                     </button>
                                     <button
                                         onClick={() => setIsModalOpen(false)}
-                                        className="w-full py-4 bg-secondary text-secondary-foreground rounded-2xl font-bold hover:bg-secondary/80 transition-all"
+                                        className="w-full py-4 bg-secondary text-secondary-foreground rounded-lg font-bold hover:bg-secondary/80 transition-all"
                                     >
                                         Cancel
                                     </button>

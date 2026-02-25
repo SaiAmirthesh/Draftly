@@ -187,30 +187,6 @@ const LandingPage = () => {
                     </div>
                 </section>
 
-                {/* Stats / Proof Section */}
-                <section className="py-20 border-y border-border/40">
-                    <div className="max-w-7xl mx-auto px-6">
-                        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-                            <div>
-                                <div className="text-4xl font-bold text-primary mb-2">99%</div>
-                                <div className="text-sm text-muted-foreground uppercase tracking-widest font-semibold">Accuracy</div>
-                            </div>
-                            <div>
-                                <div className="text-4xl font-bold text-primary mb-2">10k+</div>
-                                <div className="text-sm text-muted-foreground uppercase tracking-widest font-semibold">Emails Sent</div>
-                            </div>
-                            <div>
-                                <div className="text-4xl font-bold text-primary mb-2">5x</div>
-                                <div className="text-sm text-muted-foreground uppercase tracking-widest font-semibold">Faster Work</div>
-                            </div>
-                            <div>
-                                <div className="text-4xl font-bold text-primary mb-2">Zero</div>
-                                <div className="text-sm text-muted-foreground uppercase tracking-widest font-semibold">Stress</div>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-
                 {/* How It Works Section */}
                 <section id="how-it-works" className="bg-secondary/10 relative overflow-hidden max-w-screen mx-auto py-24">
                     <motion.div
@@ -267,6 +243,7 @@ const LandingPage = () => {
             </main>
 
             {/* Footer */}
+            <section id="testimonials">
             <footer className="py-16 border-t border-border/40">
                 <div className="max-w-7xl mx-auto px-6">
                     <div className="grid md:grid-cols-4 gap-12 mb-12">
@@ -314,6 +291,7 @@ const LandingPage = () => {
                     </div>
                 </div>
             </footer>
+            </section>
         </div>
     );
 };

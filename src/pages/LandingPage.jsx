@@ -2,8 +2,8 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { Mail, Zap, Sparkles, Send, Shield, MousePointer2, ArrowRight, Github, Twitter, Linkedin } from 'lucide-react';
-import logo from '../assets/design-tool.png'
-
+import logo from '../assets/design-tool.png';
+import SplashCursor from '../components/SplashCursor';
 const features = [
     {
         title: "Intelligent Drafting",
@@ -76,6 +76,8 @@ const LandingPage = () => {
             <main>
                 {/* Hero Section */}
                 <section className="relative pt-32 pb-20 overflow-hidden">
+                    <SplashCursor />
+
 
                     {/* Original Background Gradients (Kept for depth) */}
                     <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-[500px] bg-gradient-to-b from-primary/10 to-transparent blur-3xl -z-10" />
@@ -118,7 +120,6 @@ const LandingPage = () => {
                                 </a>
 
                             </div>
-
                             {/* Social Proof / Dashboard Preview */}
                             <motion.div
                                 initial={{ opacity: 0, y: 40 }}

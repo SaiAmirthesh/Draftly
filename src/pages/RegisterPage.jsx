@@ -41,8 +41,7 @@ export default function RegisterPage() {
     } else {
       setSuccess(true);
       setLoading(false);
-      
-      setTimeout(() => navigate("/login"), 3000);
+      setTimeout(() => navigate("/main"), 2000);
     }
   };
 
@@ -65,15 +64,10 @@ export default function RegisterPage() {
           <div className="w-20 h-20 bg-green-500/10 rounded-full flex items-center justify-center mx-auto text-green-500">
             <CheckCircle2 className="w-10 h-10" />
           </div>
-          <h2 className="text-3xl font-bold tracking-tight">Check your email</h2>
+          <h2 className="text-3xl font-bold tracking-tight">Registration successful</h2>
           <p className="text-muted-foreground leading-relaxed">
-            We've sent a verification link to <span className="text-foreground font-bold">{email}</span>.
-            Please follow the instructions to activate your account.
+            Welcome to Draftly! Redirecting you to the dashboard...
           </p>
-          <Link to="/login" className="inline-flex items-center gap-2 text-primary font-bold hover:underline">
-            Back to login
-            <ArrowRight className="w-4 h-4" />
-          </Link>
         </div>
       </div>
     )

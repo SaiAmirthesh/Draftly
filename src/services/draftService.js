@@ -1,7 +1,6 @@
 import { supabase } from "./supabaseClient";
 
 export const draftService = {
-  // Get all drafts for the current user
   async getDrafts() {
     const { data: { user } } = await supabase.auth.getUser();
     if (!user) throw new Error('Not authenticated');
@@ -18,7 +17,6 @@ export const draftService = {
     return data;
   },
 
-  // Get a single draft by ID
   async getDraftById(id) {
     const { data: { user } } = await supabase.auth.getUser();
     if (!user) throw new Error('Not authenticated');
@@ -37,7 +35,6 @@ export const draftService = {
     return data;
   },
 
-  // Save a new draft
   async saveDraft(draftData) {
     const { data: { user } } = await supabase.auth.getUser();
     if (!user) throw new Error('Not authenticated');
@@ -59,7 +56,6 @@ export const draftService = {
     return data;
   },
 
-  // Update an existing draft
   async updateDraft(id, updates) {
     const { data: { user } } = await supabase.auth.getUser();
     if (!user) throw new Error('Not authenticated');
@@ -79,7 +75,6 @@ export const draftService = {
     return data;
   },
 
-  // Delete a draft
   async deleteDraft(draftId) {
     const { error } = await supabase
       .from('drafts')

@@ -4,7 +4,6 @@ import { motion, AnimatePresence } from 'framer-motion';
 
 const ThemeToggle = () => {
     const [isDark, setIsDark] = useState(() => {
-        // Check local storage or system preference
         const savedTheme = localStorage.getItem('theme');
         if (savedTheme) {
             return savedTheme === 'dark';

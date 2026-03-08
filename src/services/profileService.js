@@ -1,7 +1,6 @@
 import { supabase } from "./supabaseClient";
 
 export const profileService = {
-  // Get current user profile
   async getProfile() {
     const { data: { user } } = await supabase.auth.getUser();
     if (!user) return null;
@@ -19,7 +18,6 @@ export const profileService = {
     return data;
   },
 
-  // Update profile
   async updateProfile(profileUpdates) {
     const { data: { user } } = await supabase.auth.getUser();
     if (!user) throw new Error('Not authenticated');
@@ -41,7 +39,6 @@ export const profileService = {
     return data;
   },
 
-  // Upload avatar image
   async uploadAvatar(file) {
     const { data: { user } } = await supabase.auth.getUser();
     if (!user) throw new Error('Not authenticated');
@@ -50,7 +47,6 @@ export const profileService = {
     const fileName = `${user.id}-${Math.random()}.${fileExt}`;
     const filePath = `${fileName}`;
 
-    // 1. Upload to Supabase Storage
     const { error: uploadError } = await supabase.storage
       .from('avatars')
       .upload(filePath, file);
@@ -60,12 +56,10 @@ export const profileService = {
       throw uploadError;
     }
 
-    // 2. Get Public URL
     const { data: { publicUrl } } = supabase.storage
       .from('avatars')
       .getPublicUrl(filePath);
 
-    // 3. Update Profile with new URL
     await this.updateProfile({ avatar_url: publicUrl });
 
     return publicUrl;

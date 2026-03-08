@@ -23,7 +23,6 @@ const MainPage = () => {
         };
         checkUser();
 
-        // Responsive sidebar logic based on screen width
         const handleResize = () => {
             if (window.innerWidth < 1024) {
                 setIsCollapsed(true);

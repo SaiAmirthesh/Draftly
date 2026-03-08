@@ -72,12 +72,9 @@ const DraftPage = () => {
             `;
             const result = await geminiService.generateEmail(prompt);
 
-            // Wait, we should probably only replace the body or subjective text...
-            // the result currently returns subject and content.
-            // Subject might be new or refined. We can replace entire content.
+            
             setContent(result.content);
 
-            // Auto-save the improvement
             await draftService.updateDraft(id, {
                 content: result.content,
                 subject: result.subject

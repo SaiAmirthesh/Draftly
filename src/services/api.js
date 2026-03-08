@@ -1,7 +1,6 @@
 const API_BASE_URL = 'http://localhost:8000/api'
 
 export const emailAPI = {
-  // Generate email
   async generateEmail(emailData) {
     try {
       const response = await fetch(`${API_BASE_URL}/generate-email`, {
@@ -23,7 +22,6 @@ export const emailAPI = {
     }
   },
 
-  // Improve/regenerate email
   async improveEmail(previousEmail) {
     try {
       const response = await fetch(`${API_BASE_URL}/improve-email`, {

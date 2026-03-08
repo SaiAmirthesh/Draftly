@@ -2,22 +2,18 @@ import { GoogleGenerativeAI } from "@google/generative-ai";
 
 const genAI = new GoogleGenerativeAI(import.meta.env.VITE_GEMINI_API_KEY);
 
-// Cache configuration
-const CACHE_TTL = 30 * 60 * 1000; // 30 minutes in milliseconds
-const cache = new Map(); // Stores: { key: { data, timestamp } }
-const inFlightRequests = new Map(); // Stores pending promises to prevent duplicate requests
+const CACHE_TTL = 30 * 60 * 1000; 
+const cache = new Map(); 
+const inFlightRequests = new Map(); 
 
-// Generate a cache key from the prompt
 const generateCacheKey = (prompt) => {
   return `email_${prompt.substring(0, 100)}`;
 };
 
-// Check if cached entry is still valid
 const isCacheValid = (timestamp) => {
   return Date.now() - timestamp < CACHE_TTL;
 };
 
-// Clear expired cache entries
 const cleanExpiredCache = () => {
   for (const [key, value] of cache.entries()) {
     if (!isCacheValid(value.timestamp)) {
@@ -31,10 +27,8 @@ export const geminiService = {
     try {
       const cacheKey = generateCacheKey(prompt);
 
-      // Clean expired entries
       cleanExpiredCache();
 
-      // Check if result is in cache and valid
       if (cache.has(cacheKey)) {
         const cachedEntry = cache.get(cacheKey);
         if (isCacheValid(cachedEntry.timestamp)) {
@@ -45,13 +39,11 @@ export const geminiService = {
         }
       }
 
-      // Check if same request is already in flight
       if (inFlightRequests.has(cacheKey)) {
         console.log('Request already in progress, awaiting same prompt...');
         return inFlightRequests.get(cacheKey);
       }
 
-      // Create the actual API request promise
       const requestPromise = (async () => {
         try {
           const systemInstruction = `
@@ -85,7 +77,6 @@ export const geminiService = {
 
           let jsonResponse;
           try {
-            // Clean up text in case it's wrapped in code blocks
             const cleanedText = text.replace(/```json/g, '').replace(/```/g, '').trim();
             jsonResponse = JSON.parse(cleanedText);
           } catch (parseError) {
@@ -102,12 +93,10 @@ export const geminiService = {
             }
           }
 
-          // Log token usage for transparency
           if (response.usageMetadata) {
             console.log(`Tokens used: ${response.usageMetadata.totalTokenCount}`);
           }
 
-          // Store in cache
           cache.set(cacheKey, {
             data: jsonResponse,
             timestamp: Date.now()
@@ -115,12 +104,10 @@ export const geminiService = {
 
           return jsonResponse;
         } finally {
-          // Remove from in-flight requests
           inFlightRequests.delete(cacheKey);
         }
       })();
 
-      // Store promise in in-flight requests
       inFlightRequests.set(cacheKey, requestPromise);
 
       return requestPromise;

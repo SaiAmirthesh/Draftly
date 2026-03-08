@@ -80,7 +80,7 @@ const LandingPage = () => {
                     <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-[300px] sm:h-[500px] bg-gradient-to-b from-primary/10 to-transparent blur-3xl -z-10" />
                     <div className="absolute -top-24 -right-24 w-64 sm:w-96 h-64 sm:h-96 bg-primary/5 rounded-full blur-3xl -z-10" />
 
-                    <div className="max-w-7xl mx-auto px-4 sm:px-6 text-center relative z-10 w-full pointer-events-none">
+                    <div className="max-w-7xl mx-auto px-4 mt-16 sm:px-6 text-center relative z-10 w-full pointer-events-none">
                         <motion.div
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}

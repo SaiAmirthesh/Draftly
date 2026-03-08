@@ -2,8 +2,8 @@ import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { signUp, signInWithGoogle } from "../services/auth";
 import { Mail, Lock, User, ArrowRight, Sparkles, CheckCircle2 } from "lucide-react";
-import logo from '../assets/design-tool.png'
-import mail from '../assets/mail.jpeg'
+import logo from '../assets/draftly-logo.png'
+import amber from '../assets/amber.jpeg'
 export default function RegisterPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -79,7 +79,7 @@ export default function RegisterPage() {
       <div className="hidden lg:flex flex-col justify-between w-1/2 bg-secondary relative overflow-hidden p-12 order-2">
         <div className="absolute inset-0 z-0">
           <img
-            src={mail}
+            src={amber}
             alt="Background"
             className="w-full h-full object-cover opacity-60 mix-blend-luminosity"
           />
@@ -107,9 +107,7 @@ export default function RegisterPage() {
         <div className="max-w-md w-full relative z-10">
           <div className="text-center mb-10 lg:text-left">
             <Link to="/" className="inline-flex items-center gap-2 group mb-6 lg:hidden">
-              <div className="w-10 h-10 bg-primary rounded-md flex items-center justify-center transition-transform group-hover:scale-110">
-                <img src={logo} className="w-10 h-10 text-primary-foreground" />
-              </div>
+              <img src={logo} className="w-14 h-14 object-contain" />
               <span className="text-2xl font-bold tracking-tight">Draftly</span>
             </Link>
             <h2 className="text-3xl font-bold tracking-tight mb-2">Create account</h2>

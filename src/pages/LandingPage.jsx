@@ -2,8 +2,8 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { Mail, Zap, Sparkles, Send, Shield, MousePointer2, ArrowRight, Github, Twitter, Linkedin } from 'lucide-react';
-import logo from '../assets/design-tool.png';
-import SplashCursor from '../components/SplashCursor';
+import logo from '../assets/draftly-logo.png';
+
 const features = [
     {
         title: "Intelligent Drafting",
@@ -41,12 +41,10 @@ const LandingPage = () => {
     return (
         <div className="bg-background text-foreground min-h-screen font-sans selection:bg-primary/30">
             {/* Header */}
-            <header className="fixed top-0 w-full z-50 border-b border-border/40 bg-background/80 backdrop-blur-xl">
+            <header className="fixed top-3 left-1/2 -translate-x-1/2 w-[calc(100%-2rem)] max-w-7xl z-50 border border-border/40 bg-background/80 backdrop-blur-xl rounded-lg shadow-lg">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
                     <div className="flex items-center gap-2 group cursor-pointer z-50">
-                        <div className="w-8 h-8 bg-primary rounded-md flex items-center justify-center transition-transform group-hover:scale-110">
-                            <img src={logo} alt="logo" className="w-8 h-8 text-primary-foreground" />
-                        </div>
+                        <img src={logo} alt="logo" className="w-14 h-14 object-contain" />
                         <span className="text-xl font-bold tracking-tight">Draftly</span>
                     </div>
 
@@ -76,7 +74,6 @@ const LandingPage = () => {
             <main>
                 {/* Hero Section */}
                 <section className="relative pt-24 sm:pt-32 pb-16 sm:pb-20 overflow-hidden">
-                    <SplashCursor />
 
 
                     {/* Original Background Gradients (Kept for depth) */}
@@ -90,14 +87,10 @@ const LandingPage = () => {
                             transition={{ duration: 0.5 }}
                             className="pointer-events-auto"
                         >
-                            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-primary/10 border border-primary/20 text-primary text-[10px] sm:text-xs font-bold mb-6 sm:mb-8 uppercase tracking-wider mx-auto">
-                                <Sparkles className="w-3 h-3" />
-                                AI-Powered Email Intelligence
-                            </div>
 
                             <h1 className="text-4xl sm:text-5xl md:text-7xl font-bold tracking-tight mb-6 sm:mb-8 leading-[1.1]">
                                 Stop Writing Emails.<br />
-                                <span className="bg-clip-text text-transparent bg-gradient-to-r from-primary via-purple-400 to-primary">Start Drafting Success.</span>
+                                <span className="bg-clip-text text-transparent bg-gradient-to-r from-primary via-amber-400 to-primary">Start Drafting Success.</span>
                             </h1>
 
                             <p className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-8 sm:mb-10 leading-relaxed px-4 sm:px-0">
@@ -223,7 +216,7 @@ const LandingPage = () => {
                 {/* CTA Section */}
                 <section className="py-16 sm:py-24 relative px-4 sm:px-6">
                     <div className="max-w-4xl mx-auto text-center">
-                        <div className="p-8 sm:p-12 rounded-lg bg-gradient-to-br from-primary to-purple-600 text-primary-foreground overflow-hidden relative group">
+                        <div className="p-8 sm:p-12 rounded-lg bg-gradient-to-br from-primary to-amber-600 text-primary-foreground overflow-hidden relative group">
                             <div className="absolute top-0 right-0 w-32 sm:w-64 h-32 sm:h-64 bg-white/10 rounded-full -mr-16 sm:-mr-32 -mt-16 sm:-mt-32 blur-2xl sm:blur-3xl group-hover:scale-125 transition-transform duration-700" />
                             <div className="relative z-10">
                                 <h2 className="text-3xl sm:text-4xl font-bold mb-4 sm:mb-6">Ready to transform your inbox?</h2>

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { PanelLeftClose, PanelLeftOpen, Plus, LogOut } from 'lucide-react';
-import logo from '../assets/design-tool.png';
+import logo from '../assets/draftly-logo.png';
 import { getUser, signOut } from '../services/auth';
 import { draftService } from '../services/draftService';
 import { profileService } from '../services/profileService';
@@ -54,9 +54,7 @@ const Sidebar = ({ isCollapsed, setIsCollapsed, activeTab, setActiveTab }) => {
             <div className={`h-14 flex items-center shrink-0 px-3 ${isCollapsed ? 'justify-center' : 'justify-between'}`}>
                 {!isCollapsed && (
                     <div className="flex items-center gap-2 cursor-pointer" onClick={() => navigate('/main')}>
-                        <div className="w-8 h-8 bg-primary rounded-md flex items-center justify-center shrink-0">
-                            <img src={logo} alt="Draftly" className="w-8 h-8 text-primary-foreground" />
-                        </div>
+                        <img src={logo} alt="Draftly" className="w-14 h-14 object-contain" />   
                         <span className="font-medium text-[15px] tracking-wide text-sidebar-foreground">Draftly</span>
                     </div>
                 )}

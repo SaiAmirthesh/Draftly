@@ -878,9 +878,9 @@ function SplashCursor({
         }
 
         function generateColor() {
-            // Draftly website thematic colors (Purples, Pinks, deep Blues)
-            // Hue from 0.65 to 0.85 approx
-            let h = 0.65 + Math.random() * 0.2;
+            // Draftly website thematic colors (Amber, Gold, Warm Orange)
+            // Hue from 0.05 to 0.15 approx (amber/gold range)
+            let h = 0.05 + Math.random() * 0.1;
             let s = 0.8 + Math.random() * 0.2;
             let c = HSVtoRGB(h, s, 1.0);
             c.r *= 0.15;

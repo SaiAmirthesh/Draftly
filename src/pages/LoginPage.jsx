@@ -2,8 +2,8 @@ import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { signIn, signInWithGoogle } from "../services/auth";
 import { Mail, Lock, ArrowRight, Sparkles } from "lucide-react";
-import logo from '../assets/design-tool.png'
-import mail from '../assets/mail.jpeg'
+import logo from '../assets/draftly-logo.png'
+import amber from '../assets/amber.jpeg'
 
 const GoogleIcon = () => (
     <svg className="w-5 h-5" viewBox="0 0 24 24">
@@ -64,7 +64,7 @@ export default function LoginPage() {
             <div className="hidden lg:flex flex-col justify-between w-1/2 bg-secondary relative overflow-hidden p-12">
                 <div className="absolute inset-0 z-0">
                     <img
-                        src={mail}
+                        src={amber}
                         alt="Background"
                         className="w-full h-full object-cover opacity-60 mix-blend-luminosity"
                     />
@@ -73,9 +73,7 @@ export default function LoginPage() {
                 </div>
 
                 <div className="relative z-20 flex items-center gap-2">
-                    <div className="w-10 h-10 bg-primary rounded-md flex items-center justify-center">
-                        <img src={logo} className="w-10 h-10 text-primary-foreground blur-none" />
-                    </div>
+                    <img src={logo} className="w-14 h-14 object-contain" />
                     <span className="text-2xl font-bold tracking-tight text-foreground">Draftly</span>
                 </div>
 
@@ -96,9 +94,7 @@ export default function LoginPage() {
                 <div className="max-w-md w-full relative z-10">
                     <div className="text-center mb-10 lg:text-left">
                         <Link to="/" className="inline-flex items-center gap-2 group mb-6 lg:hidden">
-                            <div className="w-10 h-10 bg-primary rounded-md flex items-center justify-center transition-transform group-hover:scale-110">
-                                <img src={logo} className="w-10 h-10 text-primary-foreground" />
-                            </div>
+                            <img src={logo} className="w-14 h-14 object-contain" />
                             <span className="text-2xl font-bold tracking-tight">Draftly</span>
                         </Link>
                         <h2 className="text-3xl font-bold tracking-tight mb-2">Welcome back</h2>
